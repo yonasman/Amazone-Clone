@@ -4,6 +4,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { BsCart3 } from "react-icons/bs";
 import classes from "./Header.module.css"
 import LowerHeader from './LowerHeader';
+import { Link } from 'react-router-dom';
 function Header() {
   return (
     <>
@@ -11,7 +12,7 @@ function Header() {
             <div className={classes.header__container}>
             <div className={classes.logo__container}>
                 {/* amazon logo */}
-                <a href='/'><img src='https://pngimg.com/uploads/amazon/amazon_PNG11.png' alt='amazon logo'/></a>
+                <Link to='/'><img src='https://pngimg.com/uploads/amazon/amazon_PNG11.png' alt='amazon logo'/></Link>
                 <div className={classes.delivery}>
                     <div>
                     <span>
@@ -43,21 +44,21 @@ function Header() {
                         </a>
                 
                 {/* sign in */}
-                <a href=''>
+                <Link to='/auth'>
                     <div>
                         <p>Sign In</p>
                         <span>Account & Lists</span>
                     </div>
-                </a>
+                </Link>
                 {/* order */}
-                <a href=''>
+                <Link to='/orders'>
                     <p>returns</p>
                     <span>& Orders</span>
-                </a>
-                <a href='' className={classes.cart}>
+                </Link>
+                <Link to='/cart' className={classes.cart}>
                     <BsCart3 size={35} />
                     <span>0</span>
-                </a>
+                </Link>
                 </div>
             </div>
         </section>
