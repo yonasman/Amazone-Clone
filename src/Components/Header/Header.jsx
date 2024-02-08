@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { BsCart3 } from "react-icons/bs";
 import classes from "./Header.module.css"
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
+import { DataContext } from '../DataProvider/DataProvider';
 function Header() {
+ const [{basket},dispatch]= useContext(DataContext)
+    // console.log(basket.length)
+    const totalItem = basket?.reduce((amount,item) => {
+        return item.amount + amount
+    },0)
   return (
-    <>
+    <section  className={classes.sticky}>
         <section>
             <div className={classes.header__container}>
             <div className={classes.logo__container}>
@@ -29,8 +35,8 @@ function Header() {
                 <select name='id'>
                     <option value=''>
                         All
-                    </option>
-                </select>
+                    </option> 
+                 </select>
                     <input type='text' name='' id='' placeholder='Search product'/>
                     <IoSearch size={25} />
             </div>
@@ -57,13 +63,13 @@ function Header() {
                 </Link>
                 <Link to='/cart' className={classes.cart}>
                     <BsCart3 size={35} />
-                    <span>0</span>
+                    <span>{totalItem}</span>
                 </Link>
                 </div>
             </div>
         </section>
         <LowerHeader/>
-    </>
+    </section>
   )
 }
 

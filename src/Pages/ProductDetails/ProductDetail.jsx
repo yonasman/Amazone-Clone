@@ -27,7 +27,7 @@ function ProductDetail() {
     <Layout>
           {/* {console.log(product)} */}
           {
-            isLoading? (<Loader/>):(<ProductCard  product={product}/>)
+            isLoading? (<Loader/>):(<ProductCard  product={product} renderAdd={true} renderDesc={true} flex={true}/>)
           }
           
 

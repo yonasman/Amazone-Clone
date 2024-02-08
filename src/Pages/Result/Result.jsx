@@ -33,7 +33,7 @@ function Result() {
           <hr/>
           <div className={classes.products_container}>
             {result?.map((pro) => (
-              <ProductCard key={pro.id} product={pro}/>
+              <ProductCard key={pro.id} product={pro} renderAdd={true} renderDesc={false}/>
             ))}
           </div>
         </section>
