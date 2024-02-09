@@ -7,7 +7,7 @@ function Category() {
    <section className={classes.category__container}>
     {
         CategoryInfos.map((info) => (
-            <CategoryCard data={info}/>
+            <CategoryCard  data={info}/>
         ))
     }
    </section>

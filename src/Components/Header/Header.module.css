@@ -116,6 +116,9 @@
     border: 1px #fff solid;
     border-radius: 3px;
 }
+.order__container p {
+    font-size: 14px;
+}
 .lower__container {
     background-color: #232f3e;
     color: #fff;
