@@ -1,7 +1,7 @@
-import React, { useState,useContext } from 'react'
+import { useState,useContext } from 'react'
 import {auth} from "../../Utility/Firebase"
 import classes from "./Auth.module.css"
-import { Link,useNavigate } from 'react-router-dom'
+import { Link,useNavigate,useLocation } from 'react-router-dom'
 import { signInWithEmailAndPassword,createUserWithEmailAndPassword } from 'firebase/auth'
 import {DataContext} from "../../Components/DataProvider/DataProvider"
 import { Type } from '../../Utility/Action.type'
@@ -14,6 +14,8 @@ function Auth() {
   const [{user},dispatch] = useContext(DataContext)
   const [loading, setLoading] = useState({signIn:false,signup:false})
   const navigate = useNavigate()
+  const navStateData = useLocation()
+    // console.log(navStateData)
 
   // function to handle form submit
   const authHandler =async(e) => {
@@ -28,8 +30,9 @@ function Auth() {
           user: userInfo.user
         })
         setLoading({...loading,signIn:false})
-        navigate("/")
+        navigate(navStateData?.state?.redirect || "/")
       }).catch((err) => {
+        // console.log(err)
         setError(err.message)
         setLoading({...loading,signIn:false})
       })
@@ -42,7 +45,7 @@ function Auth() {
           user: userInfo.user
         })
         setLoading({...loading,signup:false})
-        navigate("/")
+        navigate(navStateData?.state?.redirect || "/")
       }).catch((err) => {
         setError(err.message)
         setLoading({...loading,signup:false})
@@ -57,6 +60,18 @@ function Auth() {
       {/* form */}
       <div className={classes.login__container}>
         <h1>Sign in</h1>
+        {
+          navStateData?.state?.msg && (<small
+          style={{
+            padding:"5px",
+            textAlign: "center",
+            color:"red",
+            fontWeight:"bold"
+          }}
+          >
+            {navStateData.state.msg}
+          </small>)
+        }
         <form action=''>
           <div>
             <label htmlFor='email'>Email</label>

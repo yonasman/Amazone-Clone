@@ -6,6 +6,7 @@ import Loader from '../Loader/Loader'
 function Product() {
    const [products,setProducts] = useState([])
    const [isLoading,setIsLoading] = useState(false)
+
    useEffect(() => {
       setIsLoading(true)
         axios.get("https://fakestoreapi.com/products").then(
@@ -25,7 +26,7 @@ function Product() {
         isLoading? (<Loader/>) : (
           <section className={classes.products_container}>
           {
-            products.map((singleProduct) => (
+            products?.map((singleProduct) => (
                 <ProductCard product = {singleProduct} key={singleProduct.id} renderAdd={true} renderDesc={false}/>
             ))
           }

@@ -44,7 +44,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    /* overflow: hidden; */
+    overflow: hidden;
     width: 100%;
     flex: 1;
 }
@@ -61,6 +61,7 @@
     border: 1px solid #fff;
     width: 100%;
     margin-right: -2px;
+    /* overflow: hidden; */
 }
 .search svg {
     padding: 7px;

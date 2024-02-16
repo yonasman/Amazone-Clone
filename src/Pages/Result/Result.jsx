@@ -10,7 +10,7 @@ function Result() {
   const [result,setresult] = useState([])
   const {categoryName} = useParams()
   const [isLoading,setIsLoading] = useState(false)
-
+  
   useEffect(() => {
     setIsLoading(true)
     axios.get(`${productUrl}/products/category/${categoryName}`).then((res) => {
@@ -33,7 +33,7 @@ function Result() {
           <hr/>
           <div className={classes.products_container}>
             {result?.map((pro) => (
-              <ProductCard key={pro.id} product={pro} renderAdd={true} renderDesc={false}/>
+              <ProductCard  key={pro.id} product={pro} renderAdd={true} renderDesc={false}/>
             ))}
           </div>
         </section>

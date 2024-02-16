@@ -1,4 +1,3 @@
-
 import { Type } from "./Action.type";
 
 export const initialState = {
@@ -42,6 +41,12 @@ export const reducer = (state,action) => {
                     ...state,
                     basket:newBasket
                 }
+            // empty basket
+            case Type.EMPTY_BASKET:
+                return {
+                    ...state,
+                    basket:[]
+                }
                 // adding user
             case Type.SET_USER:
                 return {
@@ -50,5 +55,5 @@ export const reducer = (state,action) => {
                 }    
             default:
                 return state;
-        }s
+        }
 }

@@ -39,12 +39,12 @@ function Cart() {
           <hr/>
           {
             basket?.length == 0?(<p>Opps! Your cart is Empty.</p>): (
-              basket?.map((item,i) => {
+              basket?.map((item) => {
                 return (
                   <section className={classes.cart__product}>
 
                   
-                  <ProductCard key={i} product={item} renderDesc={true} flex={true} renderAdd={false}/>
+                  <ProductCard key={item.id} product={item} renderDesc={true} flex={true} renderAdd={false}/>
                  <div className={classes.btn__container}>
                  <button className={classes.btn} onClick={()=>increment(item)}><IoMdArrowDropupCircle size={25}/></button>
                  <span>{item.amount}</span>

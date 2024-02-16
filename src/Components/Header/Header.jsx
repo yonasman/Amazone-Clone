@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { BsCart3 } from "react-icons/bs";
@@ -7,12 +7,14 @@ import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../DataProvider/DataProvider';
 import { auth } from '../../Utility/Firebase';
+
 function Header() {
- const [{user,basket},dispatch]= useContext(DataContext)
-    // console.log(basket.length)
+ const [{user,basket,dispatch}]= useContext(DataContext)
+    // console.log(basket)
     const totalItem = basket?.reduce((amount,item) => {
         return item.amount + amount
     },0)
+    // console.log(totalItem)
   return (
     <section  className={classes.sticky}>
         <section>
@@ -55,13 +57,13 @@ function Header() {
                     <div>
                         {user?
                         (<>
-                            <p>Hello {user?.email?.split("@")[0]}</p>
+                            <p>Hello, {user?.email?.split("@")[0]}</p>
                             <p  onClick={() => auth.signOut()}>Sign Out</p>    
                         </>):
-                        <>
+                        (<>
                             <p>Hello, sign in</p>
                             <span>Account & Lists</span>
-                        </>
+                        </>)
                         }
                     </div>
                     

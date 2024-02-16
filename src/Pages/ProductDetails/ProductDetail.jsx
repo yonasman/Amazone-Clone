@@ -5,6 +5,7 @@ import axios from 'axios'
 import { productUrl } from '../../API/Endpoints'
 import ProductCard from '../../Components/Product/ProductCard'
 import Loader from '../../Components/Loader/Loader'
+import classes from "./ProductDetail.module.css"
 
 function ProductDetail() {
   const [product,setproduct] = useState({})
@@ -26,11 +27,11 @@ function ProductDetail() {
   return (
     <Layout>
           {/* {console.log(product)} */}
+          <div className={classes.detail_container}>
           {
             isLoading? (<Loader/>):(<ProductCard  product={product} renderAdd={true} renderDesc={true} flex={true}/>)
           }
-          
-
+          </div>
     </Layout>
   )
 }
